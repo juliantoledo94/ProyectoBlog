@@ -1,1 +1,3 @@
-proyecto
+Funcionamiento de LoginApp
+1- con localhost:8000 se va al home de la pagina donde se van a listar todos los articulos creados, si se entra al read more se puede ver en profundidad cada articulo unico, tiene una seccion about que describe la pagina y tiene un boton de crear post, el cual los lleva a un formulario para crear blogs nuevos.
+2-tiene un formulario de busqueda si se hace localhost:8000/buscarTitle podes buscar el titulo en la base de datos y de encontrarlos te devuelve el titulo con su respectivo slug.

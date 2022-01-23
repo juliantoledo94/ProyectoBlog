@@ -47,3 +47,19 @@ def Crear_post(request):
         form = FormularioPost()
     return render(request,"crear_post.html",{"form": form})
     
+
+def busqueda_blog(request):
+    return render(request,"busquedaBlog.html")
+
+def buscar(request):
+    # respuesta = f"Estoy buscando el titulo: {request.GET['title']}"
+    # return HttpResponse(respuesta)
+    if request.GET["title"]:
+        title = request.GET['title']
+        post= Post.objects.filter(title__icontains=title)
+        
+        return render(request,"resultadoBusquedaBlog.html",{"post":post, "title":title})
+    
+    else:
+        respuesta ="No enviaste datos"
+    return HttpResponse(respuesta)
