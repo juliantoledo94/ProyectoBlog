@@ -23,6 +23,11 @@
           <h2 class="card-title">{{ post.title }}</h2>
           <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
           <p class="card-text">{{post.content|slice:":200"}}</p>
+          <td></td>
+          {% if post.imagen %}
+            <img src="{{ post.imagen.url }}" width="200" height="200" >
+          {% endif %}
+        </td>
           <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
         </div>
       </div>
