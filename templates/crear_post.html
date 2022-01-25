@@ -5,13 +5,16 @@
 
 
 {% block content %}
-    <form method="post" action="" class="mt-3" autocomplete="off"  enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_ul }}
+    {% if user.is_authenticated %}
+        <form method="post" action="" class="mt-3" autocomplete="off"  enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_ul }}
         
 
-        <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-success">Save</button>
 
-    </form>
-
+        </form>
+    {% else %}
+        TENES QUE ESTAR LOGEADO PARA USAR LAS FUNCIONES DEL  BLOG !!!!
+    {% endif %}
 {% endblock %}

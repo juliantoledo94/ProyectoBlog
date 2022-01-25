@@ -1,6 +1,8 @@
 
+from django.forms import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 
 from loginApp.forms import FormularioPost
 
@@ -63,3 +65,47 @@ def buscar(request):
     else:
         respuesta ="No enviaste datos"
     return HttpResponse(respuesta)
+
+
+
+def leer_post(request):
+    post= Post.objects.all()
+    contexto= {"post":post}
+    
+    return render(request,"leerPost.html",contexto)
+
+
+def eliminar_post(request,post_title):
+    post=Post.objects.get(title = post_title)
+    post.delete()
+    
+    return redirect("home")
+
+
+
+
+def update_post(request,post_title):
+    
+    post=Post.objects.get(title = post_title)
+    
+    if request.method == 'POST':
+        form = FormularioPost(request.POST, request.FILES)
+        if form.is_valid():
+            
+            post.title = form.cleaned_data["title"]
+            post.slug = form.cleaned_data["slug"]
+            post.author = form.cleaned_data["author"]
+                
+            post.content = form.cleaned_data["content"]
+            post.status= form.cleaned_data["status"]
+            post.imagen = form.cleaned_data["imagen"]
+            
+            post.save()
+            return redirect("home")
+    else:
+        form = FormularioPost(model_to_dict(post))
+        
+        
+    return render(request,"crear_post.html",{"form": form})
+
+

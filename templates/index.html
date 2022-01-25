@@ -25,7 +25,7 @@
           <p class="card-text">{{post.content|slice:":200"}}</p>
           <td></td>
           {% if post.imagen %}
-            <img src="{{ post.imagen.url }}" width="200" height="200" >
+            <img src="{{ post.imagen.url }}" width="150" height="75" >
           {% endif %}
         </td>
           <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
