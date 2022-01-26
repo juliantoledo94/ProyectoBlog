@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+        <p class="card-text ">{{ object.content | safe }}</p>
+        <td></td>
+          {% if post.imagen %}
+            <img src="{{ post.imagen.url }}" width="250" height="250" >
+          {% endif %}
+        </td>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock content %}
+
