@@ -13,7 +13,7 @@ class Post(models.Model):
     updated_on= models.DateTimeField(auto_now_add=True)
     content= models.TextField()
     status=models.IntegerField(choices=STATUS, default=0)
-    imagen=models.ImageField(upload_to="fotos", null= True)
+    imagen=models.ImageField(upload_to="fotos", null= True,  blank=True)
     
     
 class Meta:
