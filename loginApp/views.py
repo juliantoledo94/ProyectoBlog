@@ -5,10 +5,10 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 
 from loginApp.forms import FormularioPost
-
-
 from .models import Post
 from django.views import generic
+
+
 
 
 def login(request):

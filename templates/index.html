@@ -17,22 +17,40 @@
   <div class="row">
     <!-- Blog Entries Column -->
     <div class="col-md-8 mt-3 left">
+
       {% for post in post_list %}
       <div class="card mb-4">
         <div class="card-body">
           <h2 class="card-title">{{ post.title }}</h2>
-          <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
-          <p class="card-text">{{post.content|slice:":200"}}</p>
+          
+            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} 
+
+          {% if user.is_authenticated %}   
+              {% if user.id == post.author.id %}
+              <a href="{% url 'modificar_post' post.title %}">Edit</a> <a href="{% url 'eliminar_post' post.title %}">Delete</a>
+              
+              
+              {% endif %}
+              {% if user.id == 1 %}
+                <a href="{% url 'modificar_post' post.title %}">Edit</a> <a href="{% url 'eliminar_post' post.title %}">Delete</a>
+              {% endif %}
+
+            </p>
+          {% endif %}
+          <p class="card-text">{{post.content|slice:":200"| safe }}</p>
           <td></td>
           {% if post.imagen %}
             <img src="{{ post.imagen.url }}" width="150" height="75" >
           {% endif %}
+
+          
         </td>
           <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
         </div>
       </div>
       {% endfor %}
     </div>
+    
     {% block sidebar %} 
     {% include 'sidebar.html' %} 
     {% endblock sidebar %}
