@@ -6,6 +6,7 @@
 
     {% for p in post %}
         <li>{{ p.title }}</li>
+        
         <button>
             <a href="{% url 'eliminar_post' p.title %}"> Eliminar </a>
             <a href="{% url 'modificar_post' p.title %}"> Modificar </a>

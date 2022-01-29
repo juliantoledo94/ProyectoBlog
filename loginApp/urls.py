@@ -17,6 +17,7 @@ urlpatterns = [
     path('post/borrar/<post_title>',eliminar_post,name="eliminar_post"),
     path('post/update/<post_title>',update_post,name="modificar_post"),
     
+    
     path('<slug:slug>/', DetailView.as_view(), name="post_detail"),
     
     

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Editar Perfil {% endblock %}
+
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user.id == profile.user.id %}
+            <form method="post" action="" class="mt-3" autocomplete="off"  enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_ul }}
+            
+
+                <button type="submit" class="btn btn-success">Editar pagina del perfil</button>
+
+            </form>
+        {% else %}
+        No sos el usuario correcto para modificar esta pagina ...
+        {% endif %}
+    {% else %}
+        No tenes permisos para estar aca ... 
+    {% endif %}
+{% endblock %}
