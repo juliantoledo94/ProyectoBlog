@@ -1,5 +1,6 @@
 
 from audioop import reverse
+from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
@@ -39,6 +40,5 @@ class Profile(models.Model):
         return str(self.user)
     
  
-    
     
     

@@ -12,6 +12,9 @@ urlpatterns = [
     path('registerLoginApp/', include('registerLoginApp.urls')),
     path('perfilesApp/',include('django.contrib.auth.urls')),
     path('perfilesApp/',include('perfilesApp.urls')),
+    path('mensajeriaApp/',include('django.contrib.auth.urls')),
+    path('mesajeriaApp/',include('mensajeriaApp.urls')),
+    
 ] 
 
 if settings.DEBUG:
