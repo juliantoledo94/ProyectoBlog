@@ -29,7 +29,10 @@
     
   </div>
 </div>
-<br/><br/>
+
+
+
+
 
 <div class="card mb-3">
   <div class="row g-0">
@@ -81,6 +84,29 @@
   </div>
 </div>
 
+
+<br>
+
+<h2>Comentarios ...</h2>
+
+<br>
+{% if not post.comments.all %}
+  No hay comentarios todavia ... <a href="{% url 'add_comment' post.pk %}">Añadi uno</a>
+
+{% else %}
+<a href="{% url 'add_comment' post.pk %}">Añadir Comentario </a>
+<br><br>
+  {% for comment in post.comments.all %}
+    <strong>
+      {{ comment.name}} - 
+      {{ comment.date_added }}
+  </strong>
+  <br/>
+  {{ comment.content }}
+  <br/><br/>
+  
+  {% endfor %} 
+{% endif %}
 
 
 {% endblock content %}
