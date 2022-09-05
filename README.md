@@ -1,6 +1,4 @@
-Video de la pagina funcionando
 
-https://www.youtube.com/watch?v=RLk354o62bQ
 
 Usuario: admin Contraseña: admin
 
